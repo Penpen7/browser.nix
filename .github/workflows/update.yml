@@ -1,0 +1,110 @@
+name: Update browsers
+
+on:
+  schedule:
+    # 毎日 06:30 JST
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
+      brave: ${{ steps.changes.outputs.brave }}
+      chrome-darwin: ${{ steps.changes.outputs.chrome-darwin }}
+      chrome-linux: ${{ steps.changes.outputs.chrome-linux }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@v16
+
+      - name: Update sources.json
+        run: nix run .#update
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet sources.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            {
+              echo "changed=true"
+              echo "brave=$(jq -r '.brave.version' sources.json)"
+              echo "chrome-darwin=$(jq -r '."google-chrome".darwin.version' sources.json)"
+              echo "chrome-linux=$(jq -r '."google-chrome".linux.version' sources.json)"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: steps.changes.outputs.changed == 'true'
+        with:
+          name: sources
+          path: sources.json
+
+  verify-linux:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: sources
+
+      - uses: DeterminateSystems/nix-installer-action@v16
+
+      - name: Build
+        run: nix build .#brave .#google-chrome --print-build-logs
+
+  verify-darwin:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: sources
+
+      - uses: DeterminateSystems/nix-installer-action@v16
+
+      - name: Build and verify signatures
+        run: |
+          nix build .#brave .#google-chrome --print-build-logs
+          codesign --verify --deep --strict "result/Applications/Brave Browser.app"
+          codesign --verify --deep --strict "result-1/Applications/Google Chrome.app"
+
+  pull-request:
+    needs: [update, verify-linux, verify-darwin]
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: sources
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: |
+            sources: Brave ${{ needs.update.outputs.brave }}, Chrome ${{ needs.update.outputs.chrome-darwin }} (darwin) / ${{ needs.update.outputs.chrome-linux }} (linux)
+          title: "Update browsers: Brave ${{ needs.update.outputs.brave }}, Chrome ${{ needs.update.outputs.chrome-darwin }}"
+          body: |
+            `nix run .#update` による自動更新です。
+
+            - Brave: ${{ needs.update.outputs.brave }}
+            - Google Chrome (darwin): ${{ needs.update.outputs.chrome-darwin }}
+            - Google Chrome (linux): ${{ needs.update.outputs.chrome-linux }}
+
+            Linux / macOS 両方のビルドと、macOS の `codesign --verify --deep --strict`
+            はこのワークフロー内で検証済みです。
+          branch: auto-update/browsers
+          delete-branch: true
