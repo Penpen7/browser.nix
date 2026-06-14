@@ -1,5 +1,5 @@
 {
-  description = "Nix overlay providing up-to-date browsers (Brave, Google Chrome) for macOS";
+  description = "Nix overlay providing up-to-date browsers (Brave, Google Chrome)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -30,32 +30,16 @@
       sources = builtins.fromJSON (builtins.readFile ./sources.json);
     in
     {
-      overlays.default =
-        final: prev:
-        if prev.stdenv.hostPlatform.isDarwin then
-          {
-            brave = final.callPackage ./pkgs/brave.nix { source = sources.brave; };
-            google-chrome = final.callPackage ./pkgs/google-chrome.nix {
-              source = sources.google-chrome.darwin;
-            };
-          }
-        else
-          {
-            # On Linux, reuse the nixpkgs derivations (which wire up all the
-            # runtime dependencies) and only bump version/src.
-            brave = prev.brave.overrideAttrs (old: {
-              inherit (sources.brave) version;
-              src = final.fetchurl {
-                inherit (sources.brave.src.${prev.stdenv.hostPlatform.system}) url hash;
-              };
-            });
-            google-chrome = prev.google-chrome.overrideAttrs (old: {
-              inherit (sources.google-chrome.linux) version;
-              src = final.fetchurl {
-                inherit (sources.google-chrome.linux.src) url hash;
-              };
-            });
-          };
+      overlays.default = final: prev: {
+        brave = final.callPackage ./pkgs/brave.nix {
+          source = sources.brave;
+          upstream = prev.brave;
+        };
+        google-chrome = final.callPackage ./pkgs/google-chrome.nix {
+          source = sources.google-chrome;
+          upstream = prev.google-chrome;
+        };
+      };
 
       packages = forAllSystems (
         pkgs:
@@ -76,6 +60,7 @@
       apps = forAllSystems (pkgs: {
         update = {
           type = "app";
+          meta.description = "Update sources.json to the latest stable Brave and Google Chrome";
           program = lib.getExe (
             pkgs.writeShellApplication {
               name = "update-browsers";
