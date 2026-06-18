@@ -22,10 +22,10 @@
   },
   "google-chrome": {
     "darwin": {
-      "version": "149.0.7827.157",
+      "version": "149.0.7827.115",
       "src": {
-        "url": "https://dl.google.com/release2/chrome/adybxztokthk5ejhul2ky5kfy6nq_149.0.7827.157/com-google-chrome_149.0.7827.157_all_ad3ijzfzv3crtsp2tbgtf3n7kx7q.crx3",
-        "hash": "sha256-MyDVfSVpAzhEDih2FJjXa9g6Jv+i2O2ncIGjC7w4NDk="
+        "url": "https://dl.google.com/release2/chrome/mq7chgm4k25zy4mr6ndjrvaglq_149.0.7827.115/com-google-chrome_149.0.7827.115_all_adtjzwsx3t5o2lazqthqomob52uq.crx3",
+        "hash": "sha256-7PnKByRCw0zRp4xg+rjBbmbn76hpR5UvukkcglJtjwk="
       }
     },
     "linux": {
