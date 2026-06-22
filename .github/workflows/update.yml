@@ -93,6 +93,7 @@ jobs:
           name: sources
 
       - uses: peter-evans/create-pull-request@v7
+        id: cpr
         with:
           commit-message: |
             sources: Brave ${{ needs.update.outputs.brave }}, Chrome ${{ needs.update.outputs.chrome-darwin }} (darwin) / ${{ needs.update.outputs.chrome-linux }} (linux)
@@ -108,3 +109,9 @@ jobs:
             はこのワークフロー内で検証済みです。
           branch: auto-update/browsers
           delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        run: gh pr merge --auto --squash "${{ steps.cpr.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
