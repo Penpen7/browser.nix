@@ -19,7 +19,7 @@ jobs:
       chrome-darwin: ${{ steps.changes.outputs.chrome-darwin }}
       chrome-linux: ${{ steps.changes.outputs.chrome-linux }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: DeterminateSystems/nix-installer-action@v16
 
@@ -51,7 +51,7 @@ jobs:
     if: needs.update.outputs.changed == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/download-artifact@v4
         with:
@@ -67,7 +67,7 @@ jobs:
     if: needs.update.outputs.changed == 'true'
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/download-artifact@v4
         with:
@@ -86,15 +86,22 @@ jobs:
     if: needs.update.outputs.changed == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/download-artifact@v4
         with:
           name: sources
 
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ secrets.AUTO_UPDATE_APP_ID }}
+          private-key: ${{ secrets.AUTO_UPDATE_APP_PRIVATE_KEY }}
+
       - uses: peter-evans/create-pull-request@v7
         id: cpr
         with:
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: |
             sources: Brave ${{ needs.update.outputs.brave }}, Chrome ${{ needs.update.outputs.chrome-darwin }} (darwin) / ${{ needs.update.outputs.chrome-linux }} (linux)
           title: "Update browsers: Brave ${{ needs.update.outputs.brave }}, Chrome ${{ needs.update.outputs.chrome-darwin }}"
