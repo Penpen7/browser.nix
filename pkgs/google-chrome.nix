@@ -76,10 +76,15 @@ let
 
     # On Linux, reuse the nixpkgs derivation (which wires up all the
     # runtime dependencies) and only bump version/src.
-    linux = upstream.overrideAttrs (_: {
+    linux = upstream.overrideAttrs (old: {
       inherit (platformSource) version;
       src = fetchurl {
         inherit (platformSource.src) url hash;
+      };
+      # sources.json only tracks the amd64 deb, so stay on x86_64-linux even
+      # when nixpkgs advertises aarch64-linux as well.
+      meta = old.meta // {
+        platforms = lib.intersectLists old.meta.platforms [ "x86_64-linux" ];
       };
     });
   };

@@ -5,7 +5,7 @@
 | パッケージ | aarch64-darwin | x86_64-darwin | x86_64-linux | aarch64-linux |
 |---|---|---|---|---|
 | `brave` | ✅ | ✅ | ✅ | ✅ |
-| `google-chrome` | ✅ | ✅ | ✅ | ―（公式ビルドなし） |
+| `google-chrome` | ✅ | ✅ | ✅ | ―（sources.json は amd64 deb のみ追跡） |
 
 - **macOS**: 公式配布物（dmg / crx3）をそのままパッケージ化するため、コード署名は維持されます。
 - **Linux**: nixpkgs の `brave` / `google-chrome` derivation（依存ライブラリの配線済み）を再利用し、
