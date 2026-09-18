@@ -1,38 +1,38 @@
 {
   "brave": {
-    "version": "1.95.102",
+    "version": "1.95.104",
     "src": {
       "aarch64-darwin": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.102/Brave-Browser-arm64.dmg",
-        "hash": "sha256-l+tfihfRoOGR06RwWeebn6R9OTADXRCiOtCG355Ksfs="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.104/Brave-Browser-arm64.dmg",
+        "hash": "sha256-9oI9U7Ppooe4+IMLcoups0/i1Kn27k4Fs7zUoh7iXq8="
       },
       "x86_64-darwin": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.102/Brave-Browser-x64.dmg",
-        "hash": "sha256-NwpxF2L74VdjA1enwQHpSSPS4FmaIObz/NoQE/jbeR0="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.104/Brave-Browser-x64.dmg",
+        "hash": "sha256-OWB/78LnwatpBJTzj5ir6VFU81SWis8c/l9qJZ8OTtE="
       },
       "aarch64-linux": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.102/brave-browser_1.95.102_arm64.deb",
-        "hash": "sha256-2S4CdU7HJ0MPUw5R2KOlEEHQ3wfWJYkHLBpNBrvwA3s="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.104/brave-browser_1.95.104_arm64.deb",
+        "hash": "sha256-JR7oP6OD22EGrmFA3wl1aJsibRXOuWzbQUfLkM18Jbo="
       },
       "x86_64-linux": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.102/brave-browser_1.95.102_amd64.deb",
-        "hash": "sha256-kwEQ/lfIO+Myc4ipQ+nqy87Ag6PhtLwIvsQTeIQYvf4="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.95.104/brave-browser_1.95.104_amd64.deb",
+        "hash": "sha256-4J48Pp/IT3XmUEigvoMMfEkHdEpAK1eQUw0iBrJ2Qm4="
       }
     }
   },
   "google-chrome": {
     "darwin": {
-      "version": "153.0.8010.48",
+      "version": "153.0.8010.50",
       "src": {
-        "url": "https://dl.google.com/release2/chrome/id2jykscutnp3miozxeosyqczi_153.0.8010.48/com-google-chrome_153.0.8010.48_all_acgamlczgxjaola66ridnmijivwq.crx3",
-        "hash": "sha256-RsfpZtrZcxngdNeFUm4AA+XURej0EFJ1CY15zeIAFYo="
+        "url": "https://dl.google.com/release2/chrome/mjftqsct7zogz5uircim4okt3a_153.0.8010.50/com-google-chrome_153.0.8010.50_all_ocb36kvzapsrcmxa7ouo2sa33q.crx3",
+        "hash": "sha256-Pd1idFxRlXFUaLfyMO1+SNF8u9WYmjjlpFayTEI4Vr8="
       }
     },
     "linux": {
-      "version": "153.0.8010.47",
+      "version": "153.0.8010.52",
       "src": {
-        "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_153.0.8010.47-1_amd64.deb",
-        "hash": "sha256-oybe/eVN4vHA1G2L9La18/dvDIl70wsgsCUJcTmgW94="
+        "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_153.0.8010.52-1_amd64.deb",
+        "hash": "sha256-KeDkta8BITkV/9t/TkmhGVbcX8WRFlyFr4aI3N/5B6w="
       }
     }
   }
