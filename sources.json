@@ -29,10 +29,10 @@
       }
     },
     "linux": {
-      "version": "156.0.8078.47",
+      "version": "156.0.8078.73",
       "src": {
-        "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_156.0.8078.47-1_amd64.deb",
-        "hash": "sha256-bJLNIukMbj4lXXgpkVQ/ogkduGFOhTapcadDOlxNesg="
+        "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_156.0.8078.73-1_amd64.deb",
+        "hash": "sha256-/RnGiV2td/TX9xLC2fDV62gvSm5/8isb0NQNA3ENKIw="
       }
     }
   }
