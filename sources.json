@@ -22,17 +22,17 @@
   },
   "google-chrome": {
     "darwin": {
-      "version": "157.0.8103.39",
+      "version": "157.0.8103.51",
       "src": {
-        "url": "https://dl.google.com/release2/chrome/advh4ovhzj2uu5dz67lalstpcfia_157.0.8103.39/com-google-chrome_157.0.8103.39_all_bx24z44qicbsx7hvwgpgun5s2i.crx3",
-        "hash": "sha256-hSgNnq9d/nH80CduV1vooi2Z804MdKBZS5uBnzJ+anA="
+        "url": "https://dl.google.com/release2/chrome/ii3v7rismsnwvpclt2dn2c3lfy_157.0.8103.51/com-google-chrome_157.0.8103.51_all_acmkwvu3jkcxypwnaexm4gdnu4.crx3",
+        "hash": "sha256-7m5lJHtB1VOjHjJEjKDpf9Mw7JOpq474LoiDxEH+0Yw="
       }
     },
     "linux": {
-      "version": "157.0.8103.50",
+      "version": "157.0.8103.78",
       "src": {
-        "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_157.0.8103.50-1_amd64.deb",
-        "hash": "sha256-khSL0U3AWCOmQGHC+vzyDU2Cs/xW9YMSBvFtKsnuP3k="
+        "url": "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_157.0.8103.78-1_amd64.deb",
+        "hash": "sha256-TXQGNrXJb2h3mGAsWq1qWicPRN0C5I2wY4rneqSGexs="
       }
     }
   }
