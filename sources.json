@@ -1,22 +1,22 @@
 {
   "brave": {
-    "version": "1.100.58",
+    "version": "1.100.59",
     "src": {
       "aarch64-darwin": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.58/Brave-Browser-arm64.dmg",
-        "hash": "sha256-Dib7TGTELOemsaHA4hhNM0ZosMUVY7zwgxQ35LmSCz8="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.59/Brave-Browser-arm64.dmg",
+        "hash": "sha256-l2547BfuW8XnWKy3p+zo+9Nq4BNM/U5SOy9BG0/O/AI="
       },
       "x86_64-darwin": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.58/Brave-Browser-x64.dmg",
-        "hash": "sha256-pL+T96g+3e+to70N57j0fupYJ1c2m1B2NSgCU3ylSOE="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.59/Brave-Browser-x64.dmg",
+        "hash": "sha256-cXzPi3qswx2UDFelnjnqaVvia2Zo9kRGF32+k49FfyA="
       },
       "aarch64-linux": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.58/brave-browser_1.100.58_arm64.deb",
-        "hash": "sha256-fIviEibAUxcEXUa37zJWmZnhnroeWMDtEiVv7+JaI+k="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.59/brave-browser_1.100.59_arm64.deb",
+        "hash": "sha256-2nu0cIP1PU0aMgg7+qCjSmjrLgvWGCz9YeGM/Ix7T4Q="
       },
       "x86_64-linux": {
-        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.58/brave-browser_1.100.58_amd64.deb",
-        "hash": "sha256-LZ0eZk79YDQ8dzJMg2vkAsvlfOElSZdVhN+n0HPxVqU="
+        "url": "https://github.com/brave/brave-browser/releases/download/v1.100.59/brave-browser_1.100.59_amd64.deb",
+        "hash": "sha256-7/KSV8VpdKeddKqMFo1QYlV9o2wMgsjCQS3nD9yxeGE="
       }
     }
   },
